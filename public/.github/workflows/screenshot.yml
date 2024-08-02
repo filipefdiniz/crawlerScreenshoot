@@ -1,0 +1,32 @@
+name: Update Screenshot
+
+on:
+  schedule:
+    - cron: '5 19 * * *'  # Agendado para rodar todos os dias à meia-noite (UTC)
+
+jobs:
+  update-screenshot:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install puppeteer
+
+    - name: Take screenshot
+      run: node takeScreenshot.js
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add public/screenshot.png
+        git commit -m 'Update daily screenshot'
+        git push

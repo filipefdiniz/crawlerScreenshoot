@@ -1,0 +1,16 @@
+{
+  "name": "screenshootdashboardsnode",
+  "version": "1.0.0",
+  "main": "takeScreenshot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "take-screenshot": "node takeScreenshot.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "puppeteer": "^22.15.0"
+  }
+}
